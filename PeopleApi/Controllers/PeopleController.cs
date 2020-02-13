@@ -22,8 +22,12 @@ namespace PeopleApi.Controllers
 
         // GET: api/People
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Person>>> GetPersonList()
+        public async Task<ActionResult<IEnumerable<Person>>> GetPersonList([FromQuery]Gender? gender)
         {
+            if (gender.HasValue)
+            {
+                return await _context.PersonList.Where(x => x.Gender == gender).ToListAsync();
+            }
             return await _context.PersonList.ToListAsync();
         }
 
