@@ -12,6 +12,7 @@ namespace PeopleApi.Model
         {
         }
         public DbSet<Person> PersonList { get; set; }
+        public DbSet<Car> CarList { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
